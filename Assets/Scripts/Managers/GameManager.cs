@@ -63,31 +63,33 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         PlayerCount = 0;
+        
+        // for tests
+        IsGameOver = false;
     }
 
     /// <summary>
-    /// Resets the manager.
+    /// Resets the manager, called when restart a game is chosen.
     /// </summary>
     public void ResetManager()
     {
         Players.Clear();
         Gamepads.Clear();
-        IsGameOver = true;
     }
 
     /// <summary>
-    /// Clears the manager.
+    /// Clears the manager, called when players go back
     /// </summary>
     public void ClearManager()
     {
-        //Deletes all playerInputController
+        // Destroys all player input controllers
         foreach (GameObject playerInputController in PlayerInputControllers)
         {
             Destroy(playerInputController);
         }
         PlayerInputControllers.Clear();
 
-        //Resets all values
+        // Resets all values
         PlayerCount = 0;
         MaxPlayerCount = 0;
         ResetManager();

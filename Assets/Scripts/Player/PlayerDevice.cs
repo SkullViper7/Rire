@@ -8,7 +8,7 @@ public class PlayerDevice : MonoBehaviour
 
     private void Start()
     {
-        //Assign device
+        // Assignes device
         _playerStateMachine = GetComponent<PlayerStateMachine>();
         LinkPlayerToDevice();
     }
@@ -35,7 +35,7 @@ public class PlayerDevice : MonoBehaviour
 
     private void TryToFindController(string name)
     {
-        //Try to find the PlayerInputController for the player given, if there is no PlayerInputController for him, desactive him
+        // Tries to find the PlayerInputController for the player given, if there is no PlayerInputController for him, desactives him
         if (GameObject.Find(name) != null)
         {
             playerInput = GameObject.Find(name).GetComponent<PlayerInput>();

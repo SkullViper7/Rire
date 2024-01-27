@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PSGamepadRemove : MonoBehaviour
 {
-    private void OnEnable()
+    private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
         CheckAndRemovePS4Gamepads();
         InputSystem.onDeviceChange += OnDeviceChange;
     }
