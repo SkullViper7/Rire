@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SourState : IPlayerState
+public class LaughingState : IPlayerState
 {
     /// <summary>
     /// Gets or sets state machine of the player.
