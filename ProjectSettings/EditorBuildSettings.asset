@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: def0f2740faf45042a7dfcda7111e57f
+  - enabled: 1
+    path: Assets/Scenes/Audran.unity
+    guid: 1031da3255c70e941a8675c22b4fb84d
   m_configObjects: {}
