@@ -74,7 +74,6 @@ public class PlayerMovements : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(_rb.velocity.y);
         if (IsInMovement && !GameManager.Instance.IsGameOver && !GameManager.Instance.IsGamePaused)
         {
             // Player moves
