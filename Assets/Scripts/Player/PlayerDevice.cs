@@ -40,7 +40,6 @@ public class PlayerDevice : MonoBehaviour
         {
             playerInput = GameObject.Find(name).GetComponent<PlayerInput>();
             _playerStateMachine.PlayerInput = playerInput;
-            _playerStateMachine.ChangeState(_playerStateMachine.SourState);
             GameManager.Instance.Players.Add(this.gameObject);
             GameManager.Instance.Gamepads.Add((Gamepad)playerInput.user.pairedDevices[0]);
             //GetComponent<PlayerPause>().InitializePause();
