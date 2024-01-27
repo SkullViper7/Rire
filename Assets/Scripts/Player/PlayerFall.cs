@@ -32,7 +32,7 @@ public class PlayerFall : MonoBehaviour
     {
         _rb.velocity = Vector3.zero;
         _rb.drag = 5f;
-        transform.Rotate(90, 0, 0);
+        transform.rotation = Quaternion.Euler(90f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         _rb.AddForce(transform.up * _fallForce);
 
         StartCoroutine(WaitUntilRaise());
@@ -47,7 +47,7 @@ public class PlayerFall : MonoBehaviour
         // Waits during the fall
         yield return new WaitForSeconds(0.8f);
 
-        transform.Rotate(-90, 0, 0);
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         _rb.drag = 0f;
 
         // Player cans move again

@@ -36,7 +36,7 @@ public class PlayerDash : MonoBehaviour
     {
         _rb.velocity = Vector3.zero;
         _rb.drag = 5f;
-        transform.Rotate(90, 0, 0);
+        transform.rotation = Quaternion.Euler(90f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         _rb.AddForce(transform.up * _dashForce);
 
         StartCoroutine(WaitUntilRaise());
@@ -60,7 +60,7 @@ public class PlayerDash : MonoBehaviour
     public void Raise()
     {
         StopAllCoroutines();
-        transform.Rotate(-90, 0, 0);
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         _rb.drag = 0f;
 
         // Player cans move again
@@ -82,6 +82,8 @@ public class PlayerDash : MonoBehaviour
     /// <param name="otherPlayerStateMachine"> Laughing player's state machine </param>
     private void CatchLaugh(PlayerStateMachine otherPlayerStateMachine)
     {
+        PunchZoom.Instance.StartZoom();
+
         otherPlayerStateMachine.ChangeState(otherPlayerStateMachine.FallingState);
         otherPlayerStateMachine.PreviousState = otherPlayerStateMachine.SourState;
         _playerStateMachine.PreviousState = _playerStateMachine.LaughingState;
