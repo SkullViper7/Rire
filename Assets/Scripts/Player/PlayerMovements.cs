@@ -13,19 +13,24 @@ public class PlayerMovements : MonoBehaviour
     public bool IsInMovement { get; private set; }
 
     /// <summary>
-    /// Gets or sets last orientation of the stick.
+    /// Last orientation of the stick.
     /// </summary>
     private Vector3 _lastOrientation;
 
     /// <summary>
-    /// Gets or sets actual orientation of the stick.
+    /// Actual orientation of the stick.
     /// </summary>
     private Vector3 _actualOrientation;
 
     /// <summary>
-    /// Gets or sets rigidbody of the player.
+    /// Rigidbody of the player.
     /// </summary>
     private Rigidbody _rb;
+
+    /// <summary>
+    /// State machine of the player.
+    /// </summary>
+    private PlayerStateMachine _playerStateMachine;
 
     /// <summary>
     /// Gets or sets default speed value of the player.
@@ -35,7 +40,8 @@ public class PlayerMovements : MonoBehaviour
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        _playerStateMachine = GetComponent<PlayerStateMachine>();
+        _rb = _playerStateMachine.Rb;
 
         _lastOrientation = transform.forward;
         _actualOrientation = transform.forward;
@@ -80,7 +86,7 @@ public class PlayerMovements : MonoBehaviour
             Vector3 velocity = ActualSpeed * Time.deltaTime * _actualOrientation;
             _rb.velocity = new Vector3 (velocity.x, _rb.velocity.y, velocity.z);
         }
-        else
+        else if (_playerStateMachine.CurrentState == _playerStateMachine.SourState || _playerStateMachine.CurrentState == _playerStateMachine.LaughingState)
         {
             // Stops movements
             _rb.velocity = new Vector3(0f, _rb.velocity.y, 0f);

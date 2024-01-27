@@ -18,10 +18,6 @@ public class SourState : IPlayerState
     /// </summary>
     private PlayerMovements _playerMovements;
 
-    /// <summary>
-    /// Called when the player enters in this state.
-    /// </summary>
-    /// <param name="playerStateMachine"> State machine of the player. </param>
     public void OnEnter(PlayerStateMachine playerStateMachine)
     {
         _playerStateMachine = playerStateMachine;
@@ -31,19 +27,11 @@ public class SourState : IPlayerState
         _playerInput.onActionTriggered += OnAction;
     }
 
-    /// <summary>
-    /// Called constantly as long as the player is in this state.
-    /// </summary>
-    /// <param name="playerStateMachine"> State machine of the player. </param>
     public void UpdateState(PlayerStateMachine playerStateMachine)
     {
 
     }
 
-    /// <summary>
-    /// Called when the player exits this state.
-    /// </summary>
-    /// <param name="playerStateMachine"> State machine of the player. </param>
     public void OnExit(PlayerStateMachine playerStateMachine)
     {
         _playerMovements.StopAllMovements();
@@ -62,6 +50,9 @@ public class SourState : IPlayerState
             {
                 case "Movements":
                     _playerMovements.Move(context.action.ReadValue<Vector2>());
+                    break;
+                case "Dash":
+                    _playerStateMachine.ChangeState(_playerStateMachine.DashingState);
                     break;
             }
         }
