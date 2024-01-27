@@ -20,6 +20,11 @@ public class PunchZoom : MonoBehaviour
     [SerializeField]
     bool _isRumbling;
 
+    [SerializeField]
+    AudioSource _audioSource;
+    [SerializeField]
+    AudioClip _clip;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -29,6 +34,8 @@ public class PunchZoom : MonoBehaviour
     {
         _camera.GetComponent<Animator>().SetBool("isZooming", true);
         _animator.SetBool("isZooming", true);
+
+        _audioSource.PlayOneShot(_clip);
 
         _isRumbling = true;
     }
