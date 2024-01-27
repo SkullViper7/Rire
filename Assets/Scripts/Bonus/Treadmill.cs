@@ -7,8 +7,8 @@ public class Treadmill : MonoBehaviour
     [SerializeField]
     float _speed;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        other.GetComponent<Rigidbody>().velocity = new Vector3(_speed, 0, 0);
+        other.GetComponent<Rigidbody>().AddForce(new Vector3(_speed, 0, 0));
     }
 }
