@@ -98,10 +98,6 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameObject.name == "Player1")
-        {
-            Debug.Log(CurrentState.ToString());
-        }
         // Execute the actual state's comportement
         CurrentState?.UpdateState(this);
     }

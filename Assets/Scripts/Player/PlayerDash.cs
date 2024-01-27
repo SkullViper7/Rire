@@ -82,6 +82,8 @@ public class PlayerDash : MonoBehaviour
     /// <param name="otherPlayerStateMachine"> Laughing player's state machine </param>
     private void CatchLaugh(PlayerStateMachine otherPlayerStateMachine)
     {
+        PunchZoom.Instance.StartZoom();
+
         otherPlayerStateMachine.ChangeState(otherPlayerStateMachine.FallingState);
         otherPlayerStateMachine.PreviousState = otherPlayerStateMachine.SourState;
         _playerStateMachine.PreviousState = _playerStateMachine.LaughingState;
