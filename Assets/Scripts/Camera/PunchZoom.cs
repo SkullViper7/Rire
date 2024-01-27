@@ -11,9 +11,17 @@ public class PunchZoom : MonoBehaviour
     [SerializeField]
     CinemachineVirtualCamera _camera;
 
-    public void Zoom()
+    [SerializeField]
+    float _timeScale;
+
+    public void StartZoom()
     {
-        Time.timeScale = 0;
-        _camera.m_Lens.FieldOfView = Mathf.Lerp(60, 30, 0.5f);
+        _camera.GetComponent<Animator>().Play("PunchZoom");
+        GetComponent<Animator>().Play("TimeScaleDrop");
+    }
+
+    private void Update()
+    {
+        Time.timeScale = _timeScale;
     }
 }
