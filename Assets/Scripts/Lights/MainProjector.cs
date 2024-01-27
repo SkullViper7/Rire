@@ -24,7 +24,8 @@ public class MainProjector : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        //Move();
+        RotateToTarget(); // Add rotation to face the target
     }
 
     void Move()
@@ -32,5 +33,12 @@ public class MainProjector : MonoBehaviour
         Vector3 newPosition = _target.transform.position + _offset;
 
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref _velocity, _smoothTime);
+    }
+
+    void RotateToTarget()
+    {
+        Vector3 directionToTarget = (_target.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * _smoothTime);
     }
 }
