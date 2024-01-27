@@ -27,9 +27,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         PlayerInput = GetComponent<PlayerInput>();
         PlayerMovements = GetComponent<PlayerMovements>();
-
-        // Set state by default
-        ChangeState(SourState);
     }
 
     /// <summary>

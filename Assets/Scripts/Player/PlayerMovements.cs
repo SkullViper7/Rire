@@ -53,14 +53,14 @@ public class PlayerMovements : MonoBehaviour
         {
             _lastOrientation = _actualOrientation;
 
-            // If joystick is not in neutral pos, actual orientation is the same as the joystick
+            // If joystick is not in neutral position, actual orientation is the same as the joystick
             if (velocity != new Vector2(0, 0))
             {
                 _actualOrientation = new Vector3(velocity.x, 0f, velocity.y);
                 IsInMovement = true;
             }
 
-            // Else keep the last orientation to don't go to the neutral pos
+            // Else keep the last orientation to don't go to the neutral position
             else
             {
                 _actualOrientation = _lastOrientation;
@@ -78,7 +78,7 @@ public class PlayerMovements : MonoBehaviour
         {
             // Player moves
             Vector3 velocity = ActualSpeed * Time.deltaTime * _actualOrientation;
-            _rb.velocity = velocity;
+            _rb.velocity = new Vector3 (velocity.x, _rb.velocity.y, velocity.z);
         }
         else
         {
