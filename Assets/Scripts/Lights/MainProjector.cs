@@ -7,8 +7,6 @@ public class MainProjector : MonoBehaviour
 {
     public Vector3 _offset;
 
-    Vector3 _velocity;
-
     [SerializeField]
     float _smoothTime;
 
@@ -24,15 +22,7 @@ public class MainProjector : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Move();
         RotateToTarget(); // Add rotation to face the target
-    }
-
-    void Move()
-    {
-        Vector3 newPosition = _target.transform.position + _offset;
-
-        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref _velocity, _smoothTime);
     }
 
     void RotateToTarget()
