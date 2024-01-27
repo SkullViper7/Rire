@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,7 @@ public class PSGamepadRemove : MonoBehaviour
 {
     private void OnEnable()
     {
-        CheckAndRemovePS4Gamepad();
+        CheckAndRemovePS4Gamepads();
         InputSystem.onDeviceChange += OnDeviceChange;
     }
 
@@ -18,19 +19,19 @@ public class PSGamepadRemove : MonoBehaviour
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
-        if (change == InputDeviceChange.Added && device.name == "DualShock4GamepadHID")
+        if (change == InputDeviceChange.Added && device.name.StartsWith("DualShock4GamepadHID"))
         {
             InputSystem.RemoveDevice(device);
         }
     }
 
-    private void CheckAndRemovePS4Gamepad()
+    private void CheckAndRemovePS4Gamepads()
     {
-        InputDevice ps4Gamepad = InputSystem.GetDevice("DualShock4GamepadHID");
+        var connectedGamepads = InputSystem.devices.Where(device => device.name.StartsWith("DualShock4GamepadHID")).ToList();
 
-        if (ps4Gamepad != null)
+        foreach (var gamepad in connectedGamepads)
         {
-            InputSystem.RemoveDevice(ps4Gamepad);
+            InputSystem.RemoveDevice(gamepad);
         }
     }
 }
