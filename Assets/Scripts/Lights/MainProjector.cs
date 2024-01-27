@@ -12,6 +12,9 @@ public class MainProjector : MonoBehaviour
     [SerializeField]
     float _smoothTime;
 
+    [SerializeField]
+    GameObject _target;
+
     GameManager _gameManager;
 
     private void Start()
@@ -26,27 +29,8 @@ public class MainProjector : MonoBehaviour
 
     void Move()
     {
-        Bounds playersBounds = CalculatePlayersBounds();
-
-        Vector3 centerPoint = playersBounds.center;
-
-        Vector3 newPosition = centerPoint + _offset;
+        Vector3 newPosition = _target.transform.position + _offset;
 
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref _velocity, _smoothTime);
-    }
-
-    Bounds CalculatePlayersBounds()
-    {
-        Bounds playersBounds = new Bounds(_gameManager.Players[0].transform.position, Vector3.zero);
-        foreach (GameObject player in _gameManager.Players)
-        {
-            Renderer renderer = player.GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                playersBounds.Encapsulate(renderer.bounds);
-            }
-        }
-
-        return playersBounds;
     }
 }
