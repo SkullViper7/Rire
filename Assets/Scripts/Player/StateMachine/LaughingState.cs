@@ -25,6 +25,8 @@ public class LaughingState : IPlayerState
         _playerMovements = _playerStateMachine.PlayerMovements;
 
         _playerInput.onActionTriggered += OnAction;
+
+        GameManager.Instance.LaughingPlayer = _playerStateMachine.gameObject;
     }
 
     public void UpdateState(PlayerStateMachine playerStateMachine)

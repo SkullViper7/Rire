@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public List<Gamepad> Gamepads { get; set; } = new();
 
+    /// <summary>
+    /// Gets or sets the laughing player.
+    /// </summary>
+    public GameObject LaughingPlayer { get; set; }
+
     private void Awake()
     {
         //Singleton

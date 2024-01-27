@@ -10,7 +10,6 @@ public class MainProjector : MonoBehaviour
     [SerializeField]
     float _smoothTime;
 
-    [SerializeField]
     GameObject _target;
 
     GameManager _gameManager;
@@ -22,6 +21,7 @@ public class MainProjector : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _target = GameManager.Instance.LaughingPlayer;
         RotateToTarget(); // Add rotation to face the target
     }
 
