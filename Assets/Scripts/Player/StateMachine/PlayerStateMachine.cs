@@ -83,6 +83,12 @@ public class PlayerStateMachine : MonoBehaviour
     public Animator LaughingAnimator { get; set; }
 
     /// <summary>
+    /// Laugh particles.
+    /// </summary>
+    [field: SerializeField]
+    private ParticleSystem _laughParticles;
+
+    /// <summary>
     /// Gets or sets a value indicating that the player is laughing.
     /// </summary>
     public bool IsLaughing { get; private set; } = false;
@@ -119,6 +125,7 @@ public class PlayerStateMachine : MonoBehaviour
         IsLaughing = false;
         LaughingPlayer.SetActive(false);
         AngryPlayer.SetActive(true);
+        _laughParticles.Stop();
     }
 
     /// <summary>
@@ -129,6 +136,7 @@ public class PlayerStateMachine : MonoBehaviour
         IsLaughing = true;
         LaughingPlayer.SetActive(true);
         AngryPlayer.SetActive(false);
+        _laughParticles.Play();
         GameManager.Instance.LaughingPlayer = this.gameObject;
     }
 

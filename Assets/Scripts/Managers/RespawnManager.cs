@@ -35,8 +35,6 @@ public class RespawnManager : MonoBehaviour
 
         playerStateMachine.ChangeState(playerStateMachine.NoMoveState);
 
-        player.GetComponent<MeshRenderer>().enabled = false;
-
         TransferLaugRandomlyFrom(playerStateMachine);
 
         Transform randomSpawn = _respawnPoints[Random.Range(0, _respawnPoints.Count)];
@@ -48,8 +46,6 @@ public class RespawnManager : MonoBehaviour
         yield return new WaitForSeconds(_timeBeforeRespawn);
 
         player.SetActive(true);
-
-        player.GetComponent<MeshRenderer>().enabled = true;
 
         playerStateMachine.ChangeState(playerStateMachine.DefaultState);
     }
