@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class Chrono : MonoBehaviour
@@ -45,7 +46,7 @@ public class Chrono : MonoBehaviour
     // Observer
     public delegate void ProgressDelegate();
 
-    //public event ProgressDelegate NewSecond;
+    public event ProgressDelegate EndOfTheChrono;
 
     private void Awake()
     {
@@ -63,6 +64,8 @@ public class Chrono : MonoBehaviour
 
     private void Start()
     {
+        EndOfTheChrono += GameManager.Instance.GameOver;
+
         ConvertTimeIntoChrono(_time);
 
         _minutes.SetText(ConvertToString(_nbrOfMinutes));
@@ -136,6 +139,7 @@ public class Chrono : MonoBehaviour
         else if (_nbrOfSeconds - 1 == -1 && _nbrOfMinutes == 0)
         {
             StopTimer();
+            EndOfTheChrono?.Invoke();
         }
         else
         {

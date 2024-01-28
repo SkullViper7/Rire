@@ -49,7 +49,6 @@ public class DefaultState : IPlayerState
                 case "Dash":
                     if (context.started)
                     {
-                        Debug.Log("dash");
                         _playerStateMachine.ChangeState(_playerStateMachine.DashingState);
                     }
                     break;
