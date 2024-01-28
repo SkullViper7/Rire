@@ -103,11 +103,15 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Called at the end of the timer.
     /// </summary>
-    private void GameOver()
+    public void GameOver()
     {
         for (int i = 0; i < Players.Count; i++)
         {
+            GameObject player = Players[i];
 
+            player.SetActive(true);
+            player.GetComponent<MeshRenderer>().enabled = true;
+            player.GetComponent<PlayerStateMachine>().StopPlayer();
         }
     }
 }

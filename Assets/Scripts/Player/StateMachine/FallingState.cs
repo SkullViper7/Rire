@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class FallingState : IPlayerState
 {
     /// <summary>
@@ -10,12 +12,17 @@ public class FallingState : IPlayerState
     /// </summary>
     private PlayerFall _playerFall;
 
+    /// <summary>
+    /// Direction of the fall.
+    /// </summary>
+    public Vector3 Direction { get; set; }
+
     public void OnEnter(PlayerStateMachine playerStateMachine)
     {
         _playerStateMachine = playerStateMachine;
         _playerFall = _playerStateMachine.PlayerFall;
 
-        _playerFall.Fall();
+        _playerFall.Fall(Direction);
     }
 
     public void OnExit(PlayerStateMachine playerStateMachine)

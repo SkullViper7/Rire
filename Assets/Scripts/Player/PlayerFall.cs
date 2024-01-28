@@ -28,10 +28,13 @@ public class PlayerFall : MonoBehaviour
     /// <summary>
     /// Gives an impulse to the player.
     /// </summary>
-    public void Fall()
+    /// <param name="direction"> Direction of the fall. </param>
+    public void Fall(Vector3 direction)
     {
         _rb.velocity = Vector3.zero;
         _rb.drag = 5f;
+        transform.forward = direction;
+        Debug.Log(transform.forward);
         transform.rotation = Quaternion.Euler(90f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         _rb.AddForce(transform.up * _fallForce);
 
@@ -47,7 +50,17 @@ public class PlayerFall : MonoBehaviour
         // Waits during the fall
         yield return new WaitForSeconds(0.8f);
 
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        Raise();
+    }
+
+
+    /// <summary>
+    /// Called to stop a fall.
+    /// </summary>
+    public void Raise()
+    {
+        StopAllCoroutines();
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
         _rb.drag = 0f;
 
         // Player cans move again

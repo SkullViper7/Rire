@@ -50,8 +50,6 @@ public class PlayerDash : MonoBehaviour
         // Waits during the dash
         yield return new WaitForSeconds(0.8f);
 
-        Debug.Log("fin de la corotine");
-
         Raise();
     }
 
@@ -61,7 +59,6 @@ public class PlayerDash : MonoBehaviour
     public void Raise()
     {
         StopAllCoroutines();
-        Debug.Log("debut de raise");
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
         _rb.drag = 0f;
 
@@ -75,6 +72,7 @@ public class PlayerDash : MonoBehaviour
     /// <param name="otherPlayerStateMachine"> Other player's state machine. </param>
     private void EjectOtherPlayer(PlayerStateMachine otherPlayerStateMachine)
     {
+        otherPlayerStateMachine.FallingState.Direction = transform.forward;
         otherPlayerStateMachine.ChangeState(otherPlayerStateMachine.FallingState);
     }
 
