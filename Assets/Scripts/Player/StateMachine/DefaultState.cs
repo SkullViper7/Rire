@@ -47,7 +47,11 @@ public class DefaultState : IPlayerState
                     _playerMovements.Move(context.action.ReadValue<Vector2>());
                     break;
                 case "Dash":
-                    _playerStateMachine.ChangeState(_playerStateMachine.DashingState);
+                    if (context.started)
+                    {
+                        Debug.Log("dash");
+                        _playerStateMachine.ChangeState(_playerStateMachine.DashingState);
+                    }
                     break;
             }
         }

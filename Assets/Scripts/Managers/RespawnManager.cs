@@ -37,6 +37,8 @@ public class RespawnManager : MonoBehaviour
 
         player.GetComponent<MeshRenderer>().enabled = false;
 
+        TransferLaugRandomlyFrom(playerStateMachine);
+
         Transform randomSpawn = _respawnPoints[Random.Range(0, _respawnPoints.Count)];
 
         player.transform.position = randomSpawn.position + new Vector3 (0f, 1.5f, 0f);
@@ -50,5 +52,20 @@ public class RespawnManager : MonoBehaviour
         player.GetComponent<MeshRenderer>().enabled = true;
 
         playerStateMachine.ChangeState(playerStateMachine.DefaultState);
+    }
+
+    /// <summary>
+    /// Transfers the laugh to a random player.
+    /// </summary>
+    private void TransferLaugRandomlyFrom(PlayerStateMachine oldLaughingPlayer)
+    {
+        List<GameObject> sourPlayers = new (GameManager.Instance.Players);
+        sourPlayers.Remove(oldLaughingPlayer.gameObject);
+
+        oldLaughingPlayer.IsNotAnymoreLaughing();
+
+        PlayerStateMachine newLaughingPlayer = sourPlayers[Random.Range(0, sourPlayers.Count)].GetComponent<PlayerStateMachine>();
+
+        newLaughingPlayer.MakePlayerLaughing();
     }
 }
