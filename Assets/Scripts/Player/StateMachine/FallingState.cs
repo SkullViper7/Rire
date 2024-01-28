@@ -18,11 +18,6 @@ public class FallingState : IPlayerState
         _playerFall.Fall();
     }
 
-    public void UpdateState(PlayerStateMachine playerStateMachine)
-    {
-
-    }
-
     public void OnExit(PlayerStateMachine playerStateMachine)
     {
 

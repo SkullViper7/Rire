@@ -51,6 +51,6 @@ public class PlayerFall : MonoBehaviour
         _rb.drag = 0f;
 
         // Player cans move again
-        _playerStateMachine.ChangeState(_playerStateMachine.PreviousState);
+        _playerStateMachine.ChangeState(_playerStateMachine.DefaultState);
     }
 }

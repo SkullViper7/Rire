@@ -86,7 +86,7 @@ public class PlayerMovements : MonoBehaviour
             Vector3 velocity = ActualSpeed * Time.deltaTime * _actualOrientation;
             _rb.velocity = new Vector3 (velocity.x, _rb.velocity.y, velocity.z);
         }
-        else if (_playerStateMachine.CurrentState == _playerStateMachine.SourState || _playerStateMachine.CurrentState == _playerStateMachine.LaughingState)
+        else if (_playerStateMachine.CurrentState == _playerStateMachine.DefaultState)
         {
             // Stops movements
             _rb.velocity = new Vector3(0f, _rb.velocity.y, 0f);

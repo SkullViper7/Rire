@@ -24,9 +24,8 @@ public class PlayerDash : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _playerStateMachine = GetComponent<PlayerStateMachine>();
 
-        _playerStateMachine.DashCollision.SourHitsOtherSour += EjectOtherPlayer;
-        _playerStateMachine.DashCollision.LaughingHitsSour += EjectOtherPlayer;
-        _playerStateMachine.DashCollision.SourHitsLaughing += CatchLaugh;
+        _playerStateMachine.DashCollision.EjectOtherPlayer += EjectOtherPlayer;
+        _playerStateMachine.DashCollision.CatchLaughing += StealLaughFrom;
     }
 
     /// <summary>
@@ -64,11 +63,11 @@ public class PlayerDash : MonoBehaviour
         _rb.drag = 0f;
 
         // Player cans move again
-        _playerStateMachine.ChangeState(_playerStateMachine.PreviousState);
+        _playerStateMachine.ChangeState(_playerStateMachine.DefaultState);
     }
 
     /// <summary>
-    /// Changes state of the other player to eject him.
+    /// Ejects the other player.
     /// </summary>
     /// <param name="otherPlayerStateMachine"> Other player's state machine. </param>
     private void EjectOtherPlayer(PlayerStateMachine otherPlayerStateMachine)
@@ -77,16 +76,17 @@ public class PlayerDash : MonoBehaviour
     }
 
     /// <summary>
-    /// Changes state of the other player to eject him.
+    /// Steals the laugh of the other player and ejects him.
     /// </summary>
-    /// <param name="otherPlayerStateMachine"> Laughing player's state machine </param>
-    private void CatchLaugh(PlayerStateMachine otherPlayerStateMachine)
+    /// <param name="oldLaughingPlayerStateMachine"> The old laughing player's state machine </param>
+    private void StealLaughFrom(PlayerStateMachine oldLaughingPlayerStateMachine)
     {
         PunchZoom.Instance.StartZoom();
 
-        otherPlayerStateMachine.ChangeState(otherPlayerStateMachine.FallingState);
-        otherPlayerStateMachine.PreviousState = otherPlayerStateMachine.SourState;
-        _playerStateMachine.PreviousState = _playerStateMachine.LaughingState;
+        oldLaughingPlayerStateMachine.IsNotAnymoreLaughing();
+        oldLaughingPlayerStateMachine.ChangeState(oldLaughingPlayerStateMachine.FallingState);
+
+        _playerStateMachine.MakePlayerLaughing();
         Raise();
     }
 }

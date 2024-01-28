@@ -20,11 +20,6 @@ public class DashingState : IPlayerState
         _playerDash.Dash();
     }
 
-    public void UpdateState(PlayerStateMachine playerStateMachine)
-    {
-
-    }
-
     public void OnExit(PlayerStateMachine playerStateMachine)
     {
         _playerStateMachine.DashCollision.gameObject.SetActive(false);

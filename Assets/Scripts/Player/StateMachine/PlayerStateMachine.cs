@@ -9,19 +9,9 @@ public class PlayerStateMachine : MonoBehaviour
     public IPlayerState CurrentState { get; set; }
 
     /// <summary>
-    /// Gets or sets previous state of the player.
+    /// Gets default state of the player.
     /// </summary>
-    public IPlayerState PreviousState { get; set; }
-
-    /// <summary>
-    /// Gets sour state of the player.
-    /// </summary>
-    public SourState SourState { get; private set; } = new();
-
-    /// <summary>
-    /// Gets laughing state of the player.
-    /// </summary>
-    public LaughingState LaughingState { get; private set; } = new();
+    public DefaultState DefaultState { get; private set; } = new();
 
     /// <summary>
     /// Gets dashing state of the player.
@@ -51,7 +41,7 @@ public class PlayerStateMachine : MonoBehaviour
     /// <summary>
     /// Collision that detectes collisions during dash.
     /// </summary>
-    public DashCollision DashCollision;
+    public DashCollision DashCollision { get; private set; }
 
     /// <summary>
     /// Gets player fall component of the player.
@@ -62,6 +52,11 @@ public class PlayerStateMachine : MonoBehaviour
     /// Gets or sets rigidbody of the player.
     /// </summary>
     public Rigidbody Rb { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating that the player is laughing.
+    /// </summary>
+    public bool IsLaughing { get; private set; } = false;
 
     private void Awake()
     {
@@ -80,25 +75,27 @@ public class PlayerStateMachine : MonoBehaviour
     /// <param name="newState"> New state of the player. </param>
     public void ChangeState(IPlayerState newState)
     {
-        // Switch to a new state
+        // Switches to a new state
         CurrentState?.OnExit(this);
-
-        if (CurrentState == null)
-        {
-            PreviousState = newState;
-        }
-        else
-        {
-            PreviousState = CurrentState;
-        }
 
         CurrentState = newState;
         CurrentState.OnEnter(this);
     }
 
-    private void FixedUpdate()
+    /// <summary>
+    /// Set this player as a player who's not laughing.
+    /// </summary>
+    public void IsNotAnymoreLaughing()
     {
-        // Execute the actual state's comportement
-        CurrentState?.UpdateState(this);
+        IsLaughing = false;
+    }
+
+    /// <summary>
+    /// Set this player as the player who's laughing.
+    /// </summary>
+    public void MakePlayerLaughing()
+    {
+        IsLaughing = true;
+        GameManager.Instance.LaughingPlayer = this.gameObject;
     }
 }
