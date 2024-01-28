@@ -14,7 +14,6 @@ public class MainProjector : MonoBehaviour
     {
         _target = GameManager.Instance.LaughingPlayer;
         RotateToTarget(); // Add rotation to face the target
-        Debug.DrawLine(transform.position, transform.forward.normalized * 3, Color.green, 0.1f);
     }
 
     void RotateToTarget()
