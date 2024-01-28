@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class LaughingState : IPlayerState
+public class DefaultState : IPlayerState
 {
     /// <summary>
     /// Gets or sets state machine of the player.
@@ -25,13 +25,6 @@ public class LaughingState : IPlayerState
         _playerMovements = _playerStateMachine.PlayerMovements;
 
         _playerInput.onActionTriggered += OnAction;
-
-        GameManager.Instance.LaughingPlayer = _playerStateMachine.gameObject;
-    }
-
-    public void UpdateState(PlayerStateMachine playerStateMachine)
-    {
-
     }
 
     public void OnExit(PlayerStateMachine playerStateMachine)
@@ -47,7 +40,7 @@ public class LaughingState : IPlayerState
     {
         if (this == _playerStateMachine.CurrentState && !GameManager.Instance.IsGameOver && !GameManager.Instance.IsGamePaused)
         {
-            // In sour state, player can move in every directions
+            // In default state, player can move in every directions and dash
             switch (context.action.name)
             {
                 case "Movements":

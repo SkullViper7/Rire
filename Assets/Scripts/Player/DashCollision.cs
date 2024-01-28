@@ -12,9 +12,8 @@ public class DashCollision : MonoBehaviour
     // Observer
     public delegate void CollisionDelegate(PlayerStateMachine playerStateMachine);
 
-    public event CollisionDelegate SourHitsOtherSour;
-    public event CollisionDelegate SourHitsLaughing;
-    public event CollisionDelegate LaughingHitsSour;
+    public event CollisionDelegate EjectOtherPlayer;
+    public event CollisionDelegate CatchLaughing;
 
     private void Start()
     {
@@ -23,29 +22,29 @@ public class DashCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // If player hits other player
+        // If player hits other player, checks if it's a catch
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerStateMachine otherPlayerStateMachine = collision.gameObject.GetComponent<PlayerStateMachine>();
 
-            if (_playerStateMachine.PreviousState == _playerStateMachine.SourState &&
-                (otherPlayerStateMachine.PreviousState == otherPlayerStateMachine.SourState ||
-                 otherPlayerStateMachine.CurrentState == otherPlayerStateMachine.SourState))
-            {
-                SourHitsOtherSour?.Invoke(otherPlayerStateMachine);
-            }
-            else if (_playerStateMachine.PreviousState == _playerStateMachine.SourState &&
-                     (otherPlayerStateMachine.PreviousState == otherPlayerStateMachine.LaughingState ||
-                      otherPlayerStateMachine.CurrentState == otherPlayerStateMachine.LaughingState))
-            {
-                SourHitsLaughing?.Invoke(otherPlayerStateMachine);
-            }
-            else if (_playerStateMachine.PreviousState == _playerStateMachine.LaughingState &&
-                     (otherPlayerStateMachine.PreviousState == otherPlayerStateMachine.SourState ||
-                      otherPlayerStateMachine.CurrentState == otherPlayerStateMachine.SourState))
-            {
-                LaughingHitsSour?.Invoke(otherPlayerStateMachine);
-            }
+            IsItASourPlayerWhoHitsTheLoughing(!_playerStateMachine.IsLaughing && otherPlayerStateMachine, otherPlayerStateMachine);
+        }
+    }
+
+    /// <summary>
+    /// Called to make fall the other player or to catch his laugh.
+    /// </summary>
+    /// <param name="isItTheCase"> A value indicating if it's a sour layer who hits the laughing. </param>
+    /// <param name="otherPlayerStateMachine"> The othe rplayer state machine. </param>
+    private void IsItASourPlayerWhoHitsTheLoughing(bool isItTheCase, PlayerStateMachine otherPlayerStateMachine)
+    {
+        if (isItTheCase)
+        {
+            CatchLaughing?.Invoke(otherPlayerStateMachine);
+        }
+        else
+        {
+            EjectOtherPlayer?.Invoke(otherPlayerStateMachine);
         }
     }
 }
