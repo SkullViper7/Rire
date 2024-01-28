@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -49,6 +50,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public GameObject LaughingPlayer { get; set; }
 
+    public GameObject EndButton;
+
     private void Awake()
     {
         //Singleton
@@ -71,6 +74,11 @@ public class GameManager : MonoBehaviour
         
         // for tests
         IsGameOver = false;
+
+        if (SceneManager.GetActiveScene().name == "Audran")
+        {
+            EndButton.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -106,6 +114,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SFXManager.Instance.VerifyCoroutine(SFXManager.Instance.EndApplause);
+        GameObject.Find("Virtual Camera").GetComponent<Animator>().Play("EndGameZoom");
+        EndButton.SetActive(true);
+        GameObject.Find("CartoonEnd").GetComponent<Animator>().Play("Cartoon");
 
         for (int i = 0; i < Players.Count; i++)
         {
