@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         SFXManager.Instance.VerifyCoroutine(SFXManager.Instance.EndApplause);
         GameObject.Find("Virtual Camera").GetComponent<Animator>().Play("EndGameZoom");
         EndButton.SetActive(true);
+        GameObject.Find("CartoonEnd").GetComponent<Animator>().Play("Cartoon");
 
         for (int i = 0; i < Players.Count; i++)
         {
