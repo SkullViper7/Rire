@@ -59,15 +59,27 @@ public class PlayerStateMachine : MonoBehaviour
     public Rigidbody Rb { get; set; }
 
     /// <summary>
+    /// Mesh when player is angry.
+    /// </summary>
+    [field: SerializeField]
+    public GameObject AngryPlayer { get; set; }
+
+    /// <summary>
+    /// Mesh when player is angry.
+    /// </summary>
+    [field: SerializeField]
+    public GameObject LaughingPlayer { get; set; }
+
+    /// <summary>
     /// Animator when player is angry.
     /// </summary>
-    [SerializeField]
+    [field: SerializeField]
     public Animator AngryAnimator { get; set; }
 
     /// <summary>
     /// Animator when player is laughing.
     /// </summary>
-    [SerializeField]
+    [field: SerializeField]
     public Animator LaughingAnimator { get; set; }
 
     /// <summary>
