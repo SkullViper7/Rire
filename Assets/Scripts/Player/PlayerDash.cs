@@ -35,6 +35,16 @@ public class PlayerDash : MonoBehaviour
     {
         _rb.velocity = Vector3.zero;
         _rb.drag = 5f;
+
+        if (_playerStateMachine.IsLaughing)
+        {
+            _playerStateMachine.LaughingAnimator.Play("LaughingDash");
+        }
+        else
+        {
+            _playerStateMachine.AngryAnimator.Play("AngryDash");
+        }
+
         transform.rotation = Quaternion.Euler(90f, transform.rotation.eulerAngles.y, 0f);
         _rb.AddForce(transform.up * _dashForce);
 

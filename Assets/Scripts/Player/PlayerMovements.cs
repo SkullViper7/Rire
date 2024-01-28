@@ -80,16 +80,36 @@ public class PlayerMovements : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (IsInMovement && !GameManager.Instance.IsGameOver && !GameManager.Instance.IsGamePaused)
+        if (_playerStateMachine.CurrentState == _playerStateMachine.DefaultState && IsInMovement && 
+            !GameManager.Instance.IsGameOver && !GameManager.Instance.IsGamePaused)
         {
             // Player moves
             Vector3 velocity = ActualSpeed * Time.deltaTime * _actualOrientation;
             _rb.velocity = new Vector3 (velocity.x, _rb.velocity.y, velocity.z);
+
+            if (_playerStateMachine.IsLaughing)
+            {
+                _playerStateMachine.LaughingAnimator.Play("LaughingRun");
+            }
+            else
+            {
+                _playerStateMachine.AngryAnimator.Play("AngryRun");
+            }
         }
-        else if (_playerStateMachine.CurrentState == _playerStateMachine.DefaultState)
+        else if (_playerStateMachine.CurrentState == _playerStateMachine.DefaultState && 
+                 !GameManager.Instance.IsGamePaused)
         {
             // Stops movements
             _rb.velocity = new Vector3(0f, _rb.velocity.y, 0f);
+
+            if (_playerStateMachine.IsLaughing)
+            {
+                _playerStateMachine.LaughingAnimator.Play("LaughingIdle");
+            }
+            else
+            {
+                _playerStateMachine.AngryAnimator.Play("AngryIdle");
+            }
         }
     }
 
