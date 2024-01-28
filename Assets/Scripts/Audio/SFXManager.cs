@@ -39,7 +39,6 @@ public class SFXManager : MonoBehaviour
     private void Start()
     {
         _audioScource = GetComponent<AudioSource>();
-        PlaySFX(StartApplause);
     }
 
     public void VerifyCoroutine(AudioClip audioClip)
