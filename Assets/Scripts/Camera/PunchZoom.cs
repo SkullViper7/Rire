@@ -10,6 +10,9 @@ public class PunchZoom : MonoBehaviour
     CinemachineVirtualCamera _camera;
 
     [SerializeField]
+    Transform _targetGroup;
+
+    [SerializeField]
     float _timeScale;
 
     [SerializeField]
@@ -88,5 +91,7 @@ public class PunchZoom : MonoBehaviour
         _animator.SetBool("isZooming", false);
         _camera.GetComponent<Animator>().SetBool("isZooming", false);
         _isRumbling = false;
+
+        _camera.LookAt = _targetGroup;
     }
 }
