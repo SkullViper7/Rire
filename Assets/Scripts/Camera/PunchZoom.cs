@@ -93,5 +93,7 @@ public class PunchZoom : MonoBehaviour
         _isRumbling = false;
 
         _camera.LookAt = _targetGroup;
+
+        SFXManager.Instance.VerifyCoroutine(SFXManager.Instance.StealApplause);
     }
 }

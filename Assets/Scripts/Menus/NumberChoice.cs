@@ -21,6 +21,9 @@ public class NumberChoice : MonoBehaviour
     [SerializeField]
     private PlayerInputManager _playerInputManager;
 
+    [SerializeField]
+    Animator _camAnim;
+
     /// <summary>
     /// Called when a number of players is choosen.
     /// </summary>
@@ -32,5 +35,7 @@ public class NumberChoice : MonoBehaviour
         _lobbyScreen.SetActive(true);
         _playerInputManager.EnableJoining();
         _numberChoiceScreen.SetActive(false);
+
+        _camAnim.Play("Lobby");
     }
 }
