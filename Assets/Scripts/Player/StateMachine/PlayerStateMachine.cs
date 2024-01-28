@@ -24,6 +24,11 @@ public class PlayerStateMachine : MonoBehaviour
     public FallingState FallingState { get; private set; } = new();
 
     /// <summary>
+    /// Gets no move state of the player.
+    /// </summary>
+    public NoMoveState NoMoveState { get; private set; } = new();
+
+    /// <summary>
     /// Gets or sets player input component of the player.
     /// </summary>
     public PlayerInput PlayerInput { get; set; }

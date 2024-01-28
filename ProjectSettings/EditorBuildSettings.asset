@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: b70445fd27c4b1f49a9b977f66e5eec1
   - enabled: 1
-    path: Assets/Scenes/MainGame.unity
-    guid: def0f2740faf45042a7dfcda7111e57f
-  - enabled: 1
     path: Assets/Scenes/Audran.unity
     guid: 1031da3255c70e941a8675c22b4fb84d
+  - enabled: 1
+    path: Assets/Scenes/Leo.unity
+    guid: a7b7449293a82bc4d8e800eb0a89f73c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: b5fc28703bcf8f9478441ca17017af71,
       type: 2}
