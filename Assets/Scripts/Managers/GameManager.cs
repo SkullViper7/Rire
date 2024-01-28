@@ -99,4 +99,15 @@ public class GameManager : MonoBehaviour
         MaxPlayerCount = 0;
         ResetManager();
     }
+
+    /// <summary>
+    /// Called at the end of the timer.
+    /// </summary>
+    private void GameOver()
+    {
+        for (int i = 0; i < Players.Count; i++)
+        {
+
+        }
+    }
 }

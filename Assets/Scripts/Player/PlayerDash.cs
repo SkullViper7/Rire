@@ -35,7 +35,7 @@ public class PlayerDash : MonoBehaviour
     {
         _rb.velocity = Vector3.zero;
         _rb.drag = 5f;
-        transform.rotation = Quaternion.Euler(90f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        transform.rotation = Quaternion.Euler(90f, transform.rotation.eulerAngles.y, 0f);
         _rb.AddForce(transform.up * _dashForce);
 
         StartCoroutine(WaitUntilRaise());
@@ -50,6 +50,8 @@ public class PlayerDash : MonoBehaviour
         // Waits during the dash
         yield return new WaitForSeconds(0.8f);
 
+        Debug.Log("fin de la corotine");
+
         Raise();
     }
 
@@ -59,7 +61,8 @@ public class PlayerDash : MonoBehaviour
     public void Raise()
     {
         StopAllCoroutines();
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        Debug.Log("debut de raise");
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
         _rb.drag = 0f;
 
         // Player cans move again
