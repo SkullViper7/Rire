@@ -1316,7 +1316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &74868538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7562,8 +7562,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: ':'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 875fbe7b9d7319c4787119ab798726f3, type: 2}
+  m_sharedMaterial: {fileID: -7273618748032430461, guid: 875fbe7b9d7319c4787119ab798726f3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7587,8 +7588,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 84.5
+  m_fontSizeBase: 84.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12387,8 +12388,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 875fbe7b9d7319c4787119ab798726f3, type: 2}
+  m_sharedMaterial: {fileID: -7273618748032430461, guid: 875fbe7b9d7319c4787119ab798726f3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12412,8 +12414,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 84.5
+  m_fontSizeBase: 84.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15634,8 +15636,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 875fbe7b9d7319c4787119ab798726f3, type: 2}
+  m_sharedMaterial: {fileID: -7273618748032430461, guid: 875fbe7b9d7319c4787119ab798726f3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15659,8 +15662,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 84.5
+  m_fontSizeBase: 84.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16155,7 +16158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805945656}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3621459, y: -0.015989186, z: 0.006213139, w: 0.9319636}
+  m_LocalRotation: {x: 0.3621459, y: -0.015989155, z: 0.006213126, w: 0.9319636}
   m_LocalPosition: {x: 0, y: 13.3, z: -17.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36791,7 +36794,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014116947}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3621459, y: -0.015989186, z: 0.006213139, w: 0.9319636}
+  m_LocalRotation: {x: 0.3621459, y: -0.015989155, z: 0.006213126, w: 0.9319636}
   m_LocalPosition: {x: 0, y: 13.3, z: -17.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
