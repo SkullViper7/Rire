@@ -59,6 +59,18 @@ public class PlayerStateMachine : MonoBehaviour
     public Rigidbody Rb { get; set; }
 
     /// <summary>
+    /// Animator when player is angry.
+    /// </summary>
+    [SerializeField]
+    public Animator AngryAnimator { get; set; }
+
+    /// <summary>
+    /// Animator when player is laughing.
+    /// </summary>
+    [SerializeField]
+    public Animator LaughingAnimator { get; set; }
+
+    /// <summary>
     /// Gets or sets a value indicating that the player is laughing.
     /// </summary>
     public bool IsLaughing { get; private set; } = false;

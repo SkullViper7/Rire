@@ -34,7 +34,16 @@ public class PlayerFall : MonoBehaviour
         _rb.velocity = Vector3.zero;
         _rb.drag = 5f;
         transform.forward = direction;
-        Debug.Log(transform.forward);
+
+        if (_playerStateMachine.IsLaughing)
+        {
+            _playerStateMachine.LaughingAnimator.Play("LaughingFall");
+        }
+        else
+        {
+            _playerStateMachine.AngryAnimator.Play("AngryFall");
+        }
+
         transform.rotation = Quaternion.Euler(90f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         _rb.AddForce(transform.up * _fallForce);
 
