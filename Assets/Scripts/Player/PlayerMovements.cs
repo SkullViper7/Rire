@@ -86,6 +86,7 @@ public class PlayerMovements : MonoBehaviour
             // Player moves
             Vector3 velocity = ActualSpeed * Time.deltaTime * _actualOrientation;
             _rb.velocity = new Vector3 (velocity.x, _rb.velocity.y, velocity.z);
+            _playerStateMachine._dustParticles.Play();
 
             if (_playerStateMachine.IsLaughing)
             {
@@ -101,6 +102,7 @@ public class PlayerMovements : MonoBehaviour
         {
             // Stops movements
             _rb.velocity = new Vector3(0f, _rb.velocity.y, 0f);
+            _playerStateMachine._dustParticles.Stop();
 
             if (_playerStateMachine.IsLaughing)
             {

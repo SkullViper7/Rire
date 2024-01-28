@@ -89,6 +89,12 @@ public class PlayerStateMachine : MonoBehaviour
     private ParticleSystem _laughParticles;
 
     /// <summary>
+    /// Dust particles.
+    /// </summary>
+    [field: SerializeField]
+    public ParticleSystem _dustParticles;
+
+    /// <summary>
     /// Gets or sets a value indicating that the player is laughing.
     /// </summary>
     public bool IsLaughing { get; private set; } = false;
