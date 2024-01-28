@@ -17,8 +17,32 @@ public class PunchZoom : MonoBehaviour
 
     Animator _animator;
 
-    [SerializeField]
     bool _isRumbling;
+
+    [SerializeField]
+    AudioSource _audioSource;
+    [SerializeField]
+    AudioClip _clip;
+
+    private static PunchZoom _instance = null;
+
+    public static PunchZoom Instance => _instance;
+
+    private void Awake()
+    {
+        //Singleton
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            _instance = this;
+        }
+        //
+    }
+
 
     private void Start()
     {
@@ -27,8 +51,12 @@ public class PunchZoom : MonoBehaviour
 
     public void StartZoom()
     {
+        _camera.LookAt = GameManager.Instance.LaughingPlayer.transform;
+
         _camera.GetComponent<Animator>().SetBool("isZooming", true);
         _animator.SetBool("isZooming", true);
+
+        _audioSource.PlayOneShot(_clip);
 
         _isRumbling = true;
     }
