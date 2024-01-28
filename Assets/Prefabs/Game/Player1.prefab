@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a61a4dd65aaa64382407185ebc49fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AngryPlayer>k__BackingField: {fileID: 7611112853598363662}
+  <LaughingPlayer>k__BackingField: {fileID: 1370596998343234276}
   <AngryAnimator>k__BackingField: {fileID: 4556819902038705323}
   <LaughingAnimator>k__BackingField: {fileID: 3111521217720409253}
 --- !u!114 &4835966999084657713

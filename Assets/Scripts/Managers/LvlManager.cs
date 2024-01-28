@@ -40,6 +40,8 @@ public class LvlManager : MonoBehaviour
             else
             {
                 playerStateMachine.ChangeState(playerStateMachine.DefaultState);
+                playerStateMachine.LaughingPlayer.SetActive(false);
+                playerStateMachine.AngryPlayer.SetActive(true);
             }
         }
     }

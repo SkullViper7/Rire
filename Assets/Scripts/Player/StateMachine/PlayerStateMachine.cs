@@ -117,6 +117,8 @@ public class PlayerStateMachine : MonoBehaviour
     public void IsNotAnymoreLaughing()
     {
         IsLaughing = false;
+        LaughingPlayer.SetActive(false);
+        AngryPlayer.SetActive(true);
     }
 
     /// <summary>
@@ -125,6 +127,8 @@ public class PlayerStateMachine : MonoBehaviour
     public void MakePlayerLaughing()
     {
         IsLaughing = true;
+        LaughingPlayer.SetActive(true);
+        AngryPlayer.SetActive(false);
         GameManager.Instance.LaughingPlayer = this.gameObject;
     }
 
