@@ -19,6 +19,8 @@ public class SFXManager : MonoBehaviour
     [Space]
     public List<AudioClip> laughs;
 
+    public Coroutine SFXCoroutine;
+
     private void Awake()
     {
         //Singleton
@@ -40,8 +42,18 @@ public class SFXManager : MonoBehaviour
         PlaySFX(StartApplause);
     }
 
-    public void PlaySFX(AudioClip audioClip)
+    public void VerifyCoroutine(AudioClip audioClip)
+    {
+        if (SFXCoroutine == null)
+        {
+            StartCoroutine(PlaySFX(audioClip));
+        }
+    }
+
+    IEnumerator PlaySFX(AudioClip audioClip)
     {
         _audioScource.PlayOneShot(audioClip);
+
+        yield return new WaitForSeconds(audioClip.length);
     }
 }

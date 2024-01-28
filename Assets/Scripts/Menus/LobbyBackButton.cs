@@ -21,6 +21,11 @@ public class BackButton : MonoBehaviour
     [SerializeField]
     private List<GameObject> _playerIndicators = new();
 
+    [SerializeField]
+    Animator _camAnim;
+    [SerializeField]
+    string _animation;
+
     /// <summary>
     /// Called when players want to go back to the previous screen.
     /// </summary>
@@ -34,5 +39,7 @@ public class BackButton : MonoBehaviour
 
         _screenToShow.SetActive(true);
         _screenToHide.SetActive(false);
+
+        _camAnim.Play(_animation);
     }
 }

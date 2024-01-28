@@ -103,4 +103,36 @@ public class PlayerStateMachine : MonoBehaviour
         IsLaughing = true;
         GameManager.Instance.LaughingPlayer = this.gameObject;
     }
+
+    /// <summary>
+    /// Stops the player never mind the actual state.
+    /// </summary>
+    public void StopPlayer()
+    {
+        switch (CurrentState) 
+        {
+            case DefaultState defaultState when defaultState != null:
+                {
+                    PlayerMovements.StopAllMovements();
+                    ChangeState(NoMoveState);
+                    break;
+                }
+            case DashingState dashingState when dashingState != null:
+                {
+                    PlayerDash.Raise();
+                    ChangeState(NoMoveState);
+                    break;
+                }
+            case FallingState fallingState when fallingState != null:
+                {
+                    PlayerFall.Raise();
+                    ChangeState(NoMoveState);
+                    break;
+                }
+            case NoMoveState noMoveState when noMoveState != null:
+                {
+                    break;
+                }
+        }
+    }
 }

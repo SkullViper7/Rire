@@ -14,6 +14,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject _numberChoiceScreen;
 
+    [SerializeField]
+    Animator _camAnim;
+
     /// <summary>
     /// Launches the number choice screen.
     /// </summary>
@@ -21,5 +24,7 @@ public class MainMenu : MonoBehaviour
     {
         _numberChoiceScreen.SetActive(true);
         _mainMenuScreen.SetActive(false);
+
+        _camAnim.Play("PlayerSelect");
     }
 }

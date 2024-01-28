@@ -36,12 +36,10 @@ public class LvlManager : MonoBehaviour
             if (i == randomIndex)
             {
                 playerStateMachine.MakePlayerLaughing();
-                Debug.Log(_gameManager.Players[i].name + "rigole");
             }
             else
             {
                 playerStateMachine.ChangeState(playerStateMachine.DefaultState);
-                Debug.Log(_gameManager.Players[i].name + "ne rigole pas");
             }
         }
     }
