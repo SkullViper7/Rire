@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
+        SFXManager.Instance.VerifyCoroutine(SFXManager.Instance.EndApplause);
+
         for (int i = 0; i < Players.Count; i++)
         {
             GameObject player = Players[i];
