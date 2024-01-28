@@ -42,6 +42,8 @@ public class DashCollision : MonoBehaviour
         }
         else
         {
+            SFXManager.Instance.VerifyCoroutine(SFXManager.Instance.StealApplause);
+
             EjectOtherPlayer?.Invoke(otherPlayerStateMachine);
         }
     }
