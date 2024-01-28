@@ -11081,7 +11081,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2088843357}
+  m_Mesh: {fileID: 1123066568}
 --- !u!33 &1978603623
 MeshFilter:
   m_ObjectHideFlags: 10
